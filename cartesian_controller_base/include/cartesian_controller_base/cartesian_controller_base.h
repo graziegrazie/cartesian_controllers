@@ -93,10 +93,6 @@ class CartesianControllerBase : public controller_interface::Controller<Hardware
 
     virtual void starting(const ros::Time& time);
 
-    void pause(const ros::Time& time);
-
-    bool resume(const ros::Time& time);
-
 
   protected:
     /**
@@ -160,7 +156,6 @@ class CartesianControllerBase : public controller_interface::Controller<Hardware
     std::string m_end_effector_link;
     std::string m_robot_base_link;
 
-    bool m_paused;
     int m_iterations;
 
   private:
