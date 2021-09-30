@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(cartesian_controller_base)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 find_package(ament_cmake REQUIRED)
 find_package(Eigen3 REQUIRED)
@@ -11,7 +11,6 @@ find_package(rclcpp REQUIRED)
 find_package(controller_interface REQUIRED)
 find_package(kdl_parser REQUIRED)
 find_package(trajectory_msgs REQUIRED)
-find_package(eigen_conversions REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(urdf REQUIRED)
 
@@ -30,7 +29,6 @@ set(THIS_PACKAGE_INCLUDE_DEPENDS
         controller_interface
         kdl_parser
         trajectory_msgs
-        eigen_conversions
         pluginlib
         urdf
         Eigen3
