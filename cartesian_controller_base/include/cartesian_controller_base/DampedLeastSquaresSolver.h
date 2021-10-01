@@ -100,7 +100,7 @@ class DampedLeastSquaresSolver : public IKSolver
               const KDL::JntArray& lower_pos_limits) override;
 
   private:
-    boost::shared_ptr<KDL::ChainJntToJacSolver> m_jnt_jacobian_solver;
+    std::shared_ptr<KDL::ChainJntToJacSolver> m_jnt_jacobian_solver;
     KDL::Jacobian m_jnt_jacobian;
 
     // Dynamic parameters

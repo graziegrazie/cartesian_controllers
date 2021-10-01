@@ -55,7 +55,6 @@
 
 // other
 #include <vector>
-#include <boost/shared_ptr.hpp>
 
 // KDL
 #include <kdl/frames.hpp>
@@ -191,12 +190,10 @@ class IKSolver
     KDL::JntArray m_lower_pos_limits;
 
     // Forward kinematics
-    boost::shared_ptr<
-      KDL::ChainFkSolverPos_recursive>  m_fk_pos_solver;
-    boost::shared_ptr<
-      KDL::ChainFkSolverVel_recursive>  m_fk_vel_solver;
-    KDL::Frame                          m_end_effector_pose;
-    ctrl::Vector6D                      m_end_effector_vel;
+    std::shared_ptr<KDL::ChainFkSolverPos_recursive>  m_fk_pos_solver;
+    std::shared_ptr<KDL::ChainFkSolverVel_recursive>  m_fk_vel_solver;
+    KDL::Frame      m_end_effector_pose;
+    ctrl::Vector6D  m_end_effector_vel;
 };
 
 
