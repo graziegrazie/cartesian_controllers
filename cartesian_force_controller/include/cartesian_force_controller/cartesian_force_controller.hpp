@@ -182,6 +182,7 @@ template <class HardwareInterface>
 ctrl::Vector6D CartesianForceController<HardwareInterface>::
 computeForceError()
 {
+  std::cout << "computeForceError" << std::endl;
   ctrl::Vector6D target_wrench;
   if (m_hand_frame_control) // Assume end-effector frame by convention
   {
@@ -193,9 +194,9 @@ computeForceError()
   }
 
   // Superimpose target wrench and sensor wrench in base frame
-  return Base::displayInBaseLink(m_ft_sensor_wrench,m_new_ft_sensor_ref)
-    + target_wrench
-    + compensateGravity();
+  // @INFO: compute error on EEF frame
+  ctrl::Vector6D wrench_error = target_wrench - m_ft_sensor_wrench + compensateGravity();
+  return wrench_error;
 }
 
 template <class HardwareInterface>
@@ -272,7 +273,7 @@ ftSensorWrenchCallback(const geometry_msgs::WrenchStamped& wrench)
   tmp[5] = wrench.wrench.torque.z;
 
   // Compute how the measured wrench appears in the frame of interest.
-  tmp = m_ft_sensor_transform * tmp;
+  //tmp = m_ft_sensor_transform * tmp;
 
   m_ft_sensor_wrench[0] = tmp[0];
   m_ft_sensor_wrench[1] = tmp[1];
